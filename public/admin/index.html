@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DANNIX Admin</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-mark">D</div>
+          <div>
+            <strong>DANNIX</strong>
+            <small>ADMIN</small>
+          </div>
+        </div>
+
+        <nav>
+          <button class="nav-link active" data-view="overview">Overview</button>
+          <button class="nav-link" data-view="projects">Projects</button>
+          <button class="nav-link" data-view="messages">Messages</button>
+          <button class="nav-link" data-view="analytics">Analytics</button>
+        </nav>
+
+        <button id="logout-btn" class="logout-btn">Log out</button>
+      </aside>
+
+      <main class="main-panel">
+        <section id="login-screen" class="screen active">
+          <div class="login-card">
+            <p class="eyebrow">Private access</p>
+            <h1>Admin dashboard</h1>
+            <form id="login-form">
+              <label>
+                <span>Username</span>
+                <input id="login-username" type="text" name="username" autocomplete="username" required />
+              </label>
+              <label>
+                <span>Password</span>
+                <input id="login-password" type="password" name="password" autocomplete="current-password" required />
+              </label>
+              <button type="submit" class="primary-btn">Sign in</button>
+              <p id="login-status" class="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </section>
+
+        <section id="overview-screen" class="screen">
+          <div class="page-header">
+            <h2>Overview</h2>
+          </div>
+          <div id="overview-cards" class="stats-grid"></div>
+        </section>
+
+        <section id="projects-screen" class="screen">
+          <div class="page-header">
+            <h2>Projects</h2>
+            <button id="new-project-btn" class="primary-btn small">New project</button>
+          </div>
+
+          <form id="project-form" class="panel-form hidden">
+            <input type="hidden" id="project-id" />
+            <div class="form-grid">
+              <label><span>Title</span><input id="project-title" name="title" required /></label>
+              <label><span>Slug</span><input id="project-slug" name="slug" required /></label>
+              <label><span>Category</span><input id="project-category" name="category" value="General" /></label>
+              <label><span>Featured</span><select id="project-featured"><option value="false">No</option><option value="true">Yes</option></select></label>
+              <label><span>Published</span><select id="project-published"><option value="true">Published</option><option value="false">Draft</option></select></label>
+              <label><span>Image URL</span><input id="project-image" name="imageUrl" type="url" /></label>
+              <label><span>Upload image</span><input id="project-image-file" name="imageFile" type="file" accept="image/png,image/jpeg,image/webp,image/gif" /></label>
+              <label><span>Live demo</span><input id="project-live" name="liveUrl" type="url" /></label>
+              <label><span>Source repo</span><input id="project-repo" name="repoUrl" type="url" /></label>
+              <label class="full-width"><span>Short description</span><textarea id="project-short" rows="3"></textarea></label>
+              <label class="full-width"><span>Description</span><textarea id="project-description" rows="6"></textarea></label>
+              <label class="full-width"><span>Technologies (comma separated)</span><input id="project-technologies" /></label>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="primary-btn">Save project</button>
+              <button type="button" id="cancel-project-btn" class="secondary-btn">Cancel</button>
+            </div>
+            <p id="project-status" class="status" aria-live="polite"></p>
+          </form>
+
+          <div id="project-list" class="card-list"></div>
+        </section>
+
+        <section id="messages-screen" class="screen">
+          <div class="page-header">
+            <h2>Messages</h2>
+          </div>
+          <div id="message-list" class="card-list"></div>
+        </section>
+
+        <section id="analytics-screen" class="screen">
+          <div class="page-header">
+            <h2>Analytics</h2>
+          </div>
+          <div id="analytics-panels" class="analytics-grid"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
